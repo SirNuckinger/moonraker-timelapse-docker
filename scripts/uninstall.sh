@@ -25,7 +25,7 @@ fi
 
 ## Initialize global vars and arrays
 DEPENDS_ON=( moonraker klipper )
-MOONRAKER_TARGET_DIR="${HOME}/moonraker/moonraker/components"
+MOONRAKER_TARGET_DIR="/opt/moonraker/moonraker/components"
 SERVICES=()
 ### END
 
@@ -121,7 +121,7 @@ function remove_component() {
 
 function remove_links() {
     local path
-    path="$(find "${HOME}" -type l -name "timelapse.cfg" -printf "%P\n")"
+    path="$(find "/opt/printer_data/config" -type l -name "timelapse.cfg" -printf "%P\n")"
     for i in ${path}; do
         printf "Removing timelapse.cfg from '%s'" "${i} ... "
         if rm -f "${HOME}/${i}"; then
